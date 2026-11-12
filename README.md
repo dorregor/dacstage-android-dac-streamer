@@ -23,6 +23,7 @@ and talks to the DAC over USB for volume and mute.
 - [Screenshots](#screenshots)
 - [Requirements](#requirements)
 - [Supported players](#supported-players)
+- [Compatible DACs](#compatible-dacs)
 - [Getting started](#getting-started)
 - [Using the TV remote](#using-the-tv-remote)
 - [DAC volume safety](#dac-volume-safety)
@@ -59,7 +60,7 @@ flowchart LR
     R["Phone<br/>DAC Stage (remote)"]
 
     P -- "native audio (USB)" --> DAC
-    D -. "volume / mute (USB Audio Class 2)" .-> DAC
+    D -. "volume / mute (USB Audio Class)" .-> DAC
     P -- "media session" --> D
     D <-- "LAN (TCP + HTTP for artwork)" --> TV
     D <-- "LAN or Bluetooth LE" --> R
@@ -141,8 +142,9 @@ Wi‑Fi isolates devices from each other (client/AP isolation), a phone remote c
 
 ## Requirements
 
-- **Host**: Android 11 (API 30) or later, USB OTG, a USB Audio Class 2 DAC and a music app that plays to it.
-  Developed with a Samsung Galaxy Tab S11 and an SMSL USB DAC.
+- **Host**: Android 11 (API 30) or later, USB OTG, a USB DAC (see [Compatible DACs](#compatible-dacs)) and a
+  music app that plays to it (see [Supported players](#supported-players)). Developed with a Samsung Galaxy
+  Tab S11 and an SMSL USB DAC.
 - **TV**: Android TV / Google TV with Android 11 or later.
 - **Remote**: any phone or tablet with Android 11 or later. Bluetooth LE is needed only for the Bluetooth
   connection.
@@ -156,11 +158,70 @@ Wi‑Fi isolates devices from each other (client/AP isolation), a phone remote c
 |---|---|---|---|---|---|
 | **UAPP** (USB Audio Player PRO) | ✓ | ✓ | ✓ optional, see [UAPP queue](#uapp-queue-optional) | ✓ | ✓ |
 | **HiBy Music** | ✓ | ✓ | ✓ (its current queue) | — (HiBy doesn't publish them) | ✓ |
-| **Other apps** with a media session | ✓ | ✓ | ✓ if the app publishes it | — | Android media volume when the DAC is used by Android audio |
+| **Any other app** with a media session (Spotify, YouTube Music, Poweramp…) | ✓ | ✓ | ✓ if the app publishes it | — | See below |
+
+### Generic apps
+
+DAC Stage works with **any music app that publishes an Android media session**, which is almost every player
+and streaming app. Through that session it gets the title, artist, album, artwork, progress and transport,
+plus the queue if the app publishes it (jumps use `skipToQueueItem`). The TV and the remote show the app's
+real name.
+
+What changes compared with UAPP and HiBy:
+
+- **No format chips**: media sessions don't include codec, sample rate or bit depth.
+- **Volume**: most of these apps play through Android's own audio stack, which then holds the DAC. In that
+  case DAC Stage doesn't touch the DAC over USB; the TV and the remote adjust **Android's media volume**
+  instead of the DAC's hardware volume. Audio quality in that path depends on Android, not on DAC Stage.
+- **Safety**: if another app is playing, DAC Stage never takes the DAC's control interface without your
+  confirmation.
 
 DAC Stage only uses what Android exposes to any app (media sessions, with notification access) and, for the
 UAPP queue, files on your own device. It never calls `playFromSearch` or `playFromMediaId` (in UAPP they
 clear the queue); a unit test enforces it.
+
+---
+
+## Compatible DACs
+
+Everything except the volume works with any DAC: now playing, queue, lyrics and the screensaver come from
+the player, not from the DAC. For the **hardware volume**, DAC Stage reads the DAC's USB descriptors and
+adapts to what it finds:
+
+| What the DAC exposes | What DAC Stage does |
+|---|---|
+| USB Audio Class 2 with a volume control and a valid dB range | Full control: volume in dB, mute, real sample rate from the clock source |
+| USB Audio Class 1 with a volume control | Volume and mute; the sample rate isn't read (UAC1 only reports it on the streaming endpoint) |
+| Volume control without a reliable dB scale (tiny, inverted or nonsensical range) | Volume isn't changed from the app; you adjust it on the DAC |
+| Volume declared but stuck or read-only | Treated as fixed: adjust it on the DAC |
+| No USB volume control at all | Volume is adjusted on the DAC; mute is used if the DAC has it |
+
+**Tested on real hardware:** SMSL USB DAC (USB ID `152A:85DD`), with a Samsung Galaxy Tab S11 as host.
+
+**Known quirks applied, not tested with DAC Stage:** the volume code includes fixes taken from the Linux
+kernel's USB audio quirk tables for these devices. They should behave correctly, but nobody has confirmed it
+on DAC Stage yet:
+
+| Device | USB ID | Adjustment |
+|---|---|---|
+| MOONDROP Quark2 | `3302:12DB` | Raised minimum (silences below it) |
+| MOONDROP JU Jiu | `31B2:0111` | Raised minimum |
+| Huawei CM-Q3 | `12D1:3A07` | Raised minimum |
+| C-Media CM102 | `0D8C:0103` | Raised minimum |
+| ESS "Asus USB DAC" | `0495:3042` | Non-standard volume units |
+| AudioQuest DragonFly | `21B4:0081` | Volume table; sample rate not read |
+| Schiit Hel | `30BE:0101` | Retries control requests that fail spuriously |
+| Samsung/AKG USB-C adapter | `04E8:A051` | Skips the clock selector; spaced requests |
+| Comture-based devices (iBasso, MOONDROP) | `2FC6:*` | Spaced control requests |
+| MOONDROP Moonriver2 Ti | `2FC6:F06B` | Wider spacing between requests |
+| RME ADI-2 | `2A39:3FD2`–`3FD4` | Fixed volume (adjusted on the DAC) |
+| JBL Pebbles | `05FC:0231` | Linear volume; sample rate not read |
+| Hotone Pulze Mini | `84EF:0082` | Linear volume |
+| MV-SILICON chips (by manufacturer name) | — | Linear volume when the range is 0–4096 |
+
+Any other DAC goes through the generic path described above. If you try one, please
+[open an issue](https://github.com/dorregor/dacstage-android-dac-streamer/issues) with its name, USB ID and
+what worked: that's how this list grows.
 
 ---
 
@@ -301,7 +362,7 @@ On macOS/Linux use `./gradlew`.
   The profile is saved in `app/src/release/generated/baselineProfiles/` and used by the next release build.
 
 Tech stack: Kotlin, Jetpack Compose (Material 3 and TV Material), coroutines/Flow, kotlinx.serialization,
-Coil 3, AndroidX Media, Android USB host API (USB Audio Class 2), NSD and Bluetooth LE L2CAP.
+Coil 3, AndroidX Media, Android USB host API (USB Audio Class 1 and 2), NSD and Bluetooth LE L2CAP.
 
 ---
 

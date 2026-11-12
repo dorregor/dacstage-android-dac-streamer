@@ -14,6 +14,37 @@ Una sola APK con tres roles:
 
 La app **nunca** decodifica ni transmite audio, y no tiene ningún respaldo de menor calidad. En una TV (leanback) el rol es siempre TV; en un teléfono o tablet se elige la primera vez (host o control remoto) y se puede cambiar después.
 
+## Apps compatibles
+
+- **UAPP** y **HiBy Music**: soporte completo (cola, chips de formato en UAPP, volumen del DAC por hardware).
+- **Cualquier otra app con sesión multimedia** (Spotify, YouTube Music, Poweramp…): título, artista, álbum,
+  carátula, progreso, transporte y cola si la app la publica (salto con `skipToQueueItem`). No hay chips de
+  formato (la sesión no los trae). Si la app reproduce por el audio de Android, Android tiene el DAC: DAC Stage
+  no lo toca por USB y la TV ajusta el **volumen multimedia de Android**. Con otra app sonando, nunca se toma la
+  interfaz del DAC sin confirmación.
+
+## DACs compatibles
+
+Todo salvo el volumen funciona con cualquier DAC. Para el **volumen por hardware**, DAC Stage lee los
+descriptores USB y se adapta:
+
+| Lo que expone el DAC | Lo que hace DAC Stage |
+|---|---|
+| USB Audio Class 2 con volumen y rango dB válido | Control completo: volumen en dB, mute, frecuencia real del Clock Source |
+| USB Audio Class 1 con volumen | Volumen y mute; no se lee la frecuencia (en UAC1 solo está en el endpoint de streaming) |
+| Volumen sin escala dB fiable | No se cambia desde la app: se ajusta en el DAC |
+| Volumen declarado pero pegado o de solo lectura | Volumen fijo: se ajusta en el DAC |
+| Sin control de volumen USB | Se ajusta en el DAC; se usa el mute si lo tiene |
+
+**Probado en hardware real:** SMSL USB DAC (`152A:85DD`) con una Samsung Galaxy Tab S11.
+
+**Con ajustes conocidos, sin probar en DAC Stage** (tomados de las tablas de quirks USB audio del kernel de
+Linux): MOONDROP Quark2, MOONDROP JU Jiu, Huawei CM-Q3, C-Media CM102, ESS "Asus USB DAC", AudioQuest
+DragonFly, Schiit Hel, adaptador USB-C Samsung/AKG, equipos Comture (iBasso, MOONDROP), MOONDROP Moonriver2
+Ti, RME ADI-2, JBL Pebbles, Hotone Pulze Mini y chips MV-SILICON. Detalle con IDs USB en el
+[README en inglés](README.md#compatible-dacs). Si pruebas otro DAC, abre un issue con su nombre, ID USB y lo
+que funcionó.
+
 ## Compilar
 
 ```powershell
