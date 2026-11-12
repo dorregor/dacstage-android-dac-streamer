@@ -1,55 +1,60 @@
-# Avisos de terceros
+# Third-party notices
 
-El código de DAC Stage se distribuye bajo la licencia MIT (ver [LICENSE](LICENSE)). La APK incluye las
-bibliotecas siguientes, cada una bajo su propia licencia. Versiones exactas: `gradle/libs.versions.toml`.
+DAC Stage's code is released under the MIT License (see [LICENSE](LICENSE)). The APK bundles the following
+libraries, each under its own license. Exact versions: `gradle/libs.versions.toml`.
 
-## Incluidas en la APK
+## Bundled in the APK
 
-| Biblioteca | Licencia |
+| Library | License |
 |---|---|
 | AndroidX: core, activity, lifecycle, media, palette, profileinstaller | Apache-2.0 |
 | Jetpack Compose: ui, foundation, animation, material3, material-icons-core, adaptive | Apache-2.0 |
 | AndroidX TV Material (`androidx.tv:tv-material`) | Apache-2.0 |
 | Coil 3 (`io.coil-kt.coil3`) | Apache-2.0 |
-| OkHttp y Okio (vía `coil-network-okhttp`) | Apache-2.0 |
+| OkHttp and Okio (via `coil-network-okhttp`) | Apache-2.0 |
 | kotlinx.serialization, kotlinx.coroutines, Kotlin stdlib | Apache-2.0 |
 | Conscrypt (`org.conscrypt:conscrypt-android`) | Apache-2.0 |
-| Bouncy Castle (`bcpkix-jdk15to18`, `bcprov-jdk15to18`) | [Bouncy Castle Licence](https://www.bouncycastle.org/licence.html) (tipo MIT) |
-| libadb-android (`com.github.MuntashirAkon:libadb-android`) | `GPL-3.0-or-later OR Apache-2.0`: **DAC Stage la usa bajo Apache-2.0** |
-| spake2-android (`com.github.MuntashirAkon.spake2-java:spake2-android`, dependencia de libadb-android) | **LGPL-3.0** |
+| Bouncy Castle (`bcpkix-jdk15to18`, `bcprov-jdk15to18`) | [Bouncy Castle Licence](https://www.bouncycastle.org/licence.html) (MIT-style) |
+| libadb-android (`com.github.MuntashirAkon:libadb-android`) | `GPL-3.0-or-later OR Apache-2.0`: **DAC Stage uses it under Apache-2.0** |
+| spake2-android (`com.github.MuntashirAkon.spake2-java:spake2-android`, a dependency of libadb-android) | **LGPL-3.0** |
 
-Texto de Apache-2.0: <https://www.apache.org/licenses/LICENSE-2.0>.
+Apache-2.0 text: <https://www.apache.org/licenses/LICENSE-2.0>.
 
-### Sobre spake2-android (LGPL-3.0)
+### About spake2-android (LGPL-3.0)
 
-La usa el cliente ADB local que lee la cola de UAPP (emparejado de la depuración inalámbrica). Se enlaza como
-biblioteca sin modificar. Su código fuente está en <https://github.com/MuntashirAkon/spake2-java> y el texto de la
-licencia en <https://www.gnu.org/licenses/lgpl-3.0.html>. Como el código completo de DAC Stage es abierto y se
-compila con Gradle (ver README), cualquiera puede reconstruir la APK con otra versión de esa biblioteca, como
-exige la LGPL.
+It is used by the local ADB client that reads the UAPP queue (wireless debugging pairing). It is linked as an
+unmodified library. Its source code is at <https://github.com/MuntashirAkon/spake2-java> and the license text
+at <https://www.gnu.org/licenses/lgpl-3.0.html>. Since DAC Stage's full source is open and builds with Gradle
+(see the README), anyone can rebuild the APK with a different version of that library, as the LGPL requires.
 
-### Íconos
+### Icons
 
-Varios íconos de `ui/common/AppIcons.kt` son trazos de Material Icons (Google, Apache-2.0).
+Several icons in `ui/common/AppIcons.kt` are paths from Material Icons (Google, Apache-2.0).
 
-## Solo para compilar o probar (no van en la APK)
+## Build and test only (not in the APK)
 
-JUnit 4 (EPL-1.0), AndroidX Test, UI Automator y Benchmark/Baseline Profile (Apache-2.0), Android Gradle
-Plugin y Kotlin Gradle Plugin (Apache-2.0).
+JUnit 4 (EPL-1.0), AndroidX Test, UI Automator and Benchmark/Baseline Profile (Apache-2.0), Android Gradle
+Plugin and Kotlin Gradle Plugin (Apache-2.0).
 
-## Servicios en línea (opcionales, en tiempo de ejecución)
+## Online services (optional, at runtime)
 
-DAC Stage no incluye datos ni imágenes de estos servicios: los consulta cuando el usuario lo activa.
+DAC Stage doesn't include data or images from these services: it queries them when the user enables them.
 
-- **LRCLIB** (<https://lrclib.net>): letras. Se envían título, artista, álbum y duración de la pista.
-- **MusicBrainz** y **Cover Art Archive** (<https://musicbrainz.org>): año, sello y portada.
-- **Google Earth View**: fotos del salvapantallas de la TV, desde endpoints públicos no documentados de
-  Google. Las fotos tienen copyright de Google y de sus proveedores (se muestra la atribución de cada una); no
-  se redistribuyen y el servicio puede cambiar o dejar de funcionar sin aviso.
+- **LRCLIB** (<https://lrclib.net>): lyrics. The track's title, artist, album and duration are sent.
+- **MusicBrainz** and **Cover Art Archive** (<https://musicbrainz.org>): year, label and cover.
+- **Google Earth View**: TV screensaver photos, from public but undocumented Google endpoints. The photos are
+  copyrighted by Google and its providers (each photo's attribution is shown); they are not redistributed and
+  the service may change or stop working without notice.
 
-## Marcas
+## Screenshots
 
-UAPP (USB Audio Player PRO), HiBy, TIDAL, SMSL, Android y Google TV son marcas de sus respectivos dueños. DAC
-Stage es un proyecto independiente, sin relación ni respaldo de ellos. Interactúa con esas apps solo mediante
-interfaces de Android (sesiones multimedia y archivos o registros de la propia app en el dispositivo del
-usuario) y no incluye código ni binarios suyos.
+The images in `docs/screenshots/` show album artwork, song lyrics and Earth View photos that belong to their
+respective rights holders. They appear only to illustrate how the app works and are not covered by this
+project's MIT License.
+
+## Trademarks
+
+UAPP (USB Audio Player PRO), HiBy, TIDAL, SMSL, Android and Google TV are trademarks of their respective
+owners. DAC Stage is an independent project, not affiliated with or endorsed by them. It interacts with those
+apps only through Android interfaces (media sessions, and the app's own files or logs on the user's device)
+and contains no code or binaries from them.
