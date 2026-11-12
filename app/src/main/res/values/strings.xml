@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">DAC Stage</string>
+
+    <!-- System -->
+    <string name="media_listener_label">DAC Stage: read HiBy/UAPP playback</string>
+    <string name="host_service_channel">Host service</string>
+    <string name="host_notification_text">Host active: sharing what’s playing and serving the TV</string>
+    <string name="host_notification_stop">Stop</string>
+    <string name="integration_pending">DAC Stage · %1$s: integration pending</string>
+
+    <!-- Common -->
+    <string name="untitled">Untitled</string>
+    <string name="action_previous">Previous</string>
+    <string name="action_play">Play</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_next">Next</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_back">Back</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_forget">Forget</string>
+    <string name="settings">Settings</string>
+    <string name="status_paused">Paused</string>
+    <string name="status_buffering">Loading…</string>
+    <string name="status_stopped">Stopped</string>
+    <string name="nothing_playing">Nothing playing</string>
+    <string name="hint_press_play_in">Press play in %1$s.</string>
+    <string name="unsupported_player">Unsupported player</string>
+    <string name="supported_players">DAC Stage works with any music app that shows a media notification.</string>
+
+    <!-- Queue -->
+    <string name="queue_title">Queue</string>
+    <string name="queue_position">%1$d of %2$d</string>
+    <string name="queue_jump_progress">Skipping… %1$d/%2$d</string>
+    <string name="queue_jumping">Skipping…</string>
+    <string name="queue_playing">Playing</string>
+    <string name="queue_uapp_no_access">Turn on UAPP queue reading on the host</string>
+    <string name="queue_uapp_out_of_sync">The UAPP queue is out of sync; it will update by itself</string>
+    <string name="queue_empty">The queue is empty</string>
+    <string name="queue_not_published_by">%1$s doesn’t share its queue</string>
+    <string name="queue_not_published">The player doesn’t share its queue</string>
+    <string name="queue_no_player">No active player</string>
+
+    <!-- Command errors -->
+    <string name="error_no_player">No active player on the host</string>
+    <string name="error_not_supported">The player doesn’t support that action</string>
+    <string name="error_queue_unavailable">The queue isn’t available</string>
+    <string name="error_unknown_queue_item">That track is no longer in the queue</string>
+    <string name="error_jump_failed">Couldn’t skip to the track</string>
+    <string name="error_jump_cancelled">Skipping cancelled</string>
+    <string name="error_host">Host error</string>
+
+    <!-- DAC and volume -->
+    <string name="dac_disconnected">DAC disconnected</string>
+    <string name="dac_connected">DAC connected</string>
+    <string name="dac_named">DAC · %1$s</string>
+    <string name="volume_muted">Muted</string>
+    <string name="volume_cap_reached">Limit reached</string>
+    <string name="volume_unavailable">Volume unavailable right now</string>
+    <string name="volume_label_on_dac">On the DAC</string>
+    <string name="volume_mode_on_device">This DAC has no USB volume control. Adjust the volume on the DAC.</string>
+    <string name="volume_mode_no_scale">This DAC doesn\'t report a reliable volume scale. Adjust the volume on the DAC.</string>
+    <string name="volume_mode_no_range">The DAC didn\'t report its volume range. Reconnect it or refresh.</string>
+    <string name="dac_usb">USB DAC</string>
+    <string name="dac_none">No DAC</string>
+    <string name="dac_chip_connected">Connected</string>
+    <string name="dac_chip_disconnected">Disconnected</string>
+    <string name="dac_sample_rate">Actual sample rate: %1$s</string>
+    <string name="dac_sample_rate_player">Sample rate (set by UAPP): %1$s</string>
+    <string name="dac_usb_link">USB link: %1$s per sample</string>
+    <string name="dac_volume_down">Down 1 dB</string>
+    <string name="dac_volume_up">Up 1 dB</string>
+    <string name="dac_cap">Limit %1$s</string>
+    <string name="dac_requested">Requested: %1$s</string>
+    <string name="dac_needs_confirmation">The player is using the DAC control: changing the volume will ask for confirmation.</string>
+    <string name="dac_busy">The DAC control is busy right now.</string>
+    <string name="dac_no_permission">USB permission missing: accept the system dialog.</string>
+    <string name="dac_connect_usb">Connect the DAC over USB.</string>
+    <string name="dac_confirm_title">Change DAC volume</string>
+    <string name="dac_confirm_warning_by">%1$s is using the DAC control. Taking it over while music plays may cause a brief audio dropout.</string>
+    <string name="dac_confirm_warning">The player is using the DAC control. Taking it over while music plays may cause a brief audio dropout.</string>
+    <string name="dac_confirm_pause_apply">Pause and apply</string>
+    <string name="dac_confirm_always_allow">Always allow with %1$s</string>
+
+    <!-- Host (tablet / phone) -->
+    <string name="host_no_tv">No TV connected</string>
+    <string name="host_one_tv">TV: %1$s</string>
+    <string name="host_notification_access_title">Notification access needed</string>
+    <string name="host_notification_access_body">Without it, DAC Stage can’t see what’s playing in your music apps.</string>
+    <string name="host_grant">Grant</string>
+    <string name="host_unsupported_body">%1$s is playing. DAC Stage works with HiBy Music and UAPP.</string>
+    <string name="host_hint_play_music">Play music in any app (HiBy Music, UAPP, Spotify…).</string>
+    <string name="host_configure">Set up</string>
+
+    <!-- Host settings -->
+    <string name="settings_cap_title">Volume limit</string>
+    <string name="settings_cap_explain">No source (the TV or this device) can raise the DAC volume above the limit. The TV can’t change it.</string>
+    <string name="settings_cap_current">Current limit: %1$s</string>
+    <string name="settings_cap_default">Default: DAC maximum − 10 dB</string>
+    <string name="settings_cap_connect_dac">Connect the DAC to adjust it.</string>
+    <string name="settings_cap_value">Limit: %1$s</string>
+    <string name="settings_cap_range">DAC range: %1$s to %2$s</string>
+    <string name="settings_apply">Apply</string>
+    <string name="settings_host_name_title">Host name</string>
+    <string name="settings_host_name_explain">This is how this device appears on the TV.</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_pair_title">Pair TV</string>
+    <string name="settings_pair_explain">Open DAC Stage on the TV: it will show a code. Enter it here to pair it.</string>
+    <string name="settings_server_inactive">The TV server isn’t running right now.</string>
+    <string name="settings_manual_address">If the TV can’t find the host, enter this on it: %1$s</string>
+    <string name="settings_no_pending">No TVs waiting to pair.</string>
+    <string name="settings_paired_tvs">Paired TVs</string>
+    <string name="settings_tv_online">Connected now · paired %1$s</string>
+    <string name="settings_tv_paired_on">Paired on %1$s</string>
+    <string name="settings_forget_title">Forget %1$s?</string>
+    <string name="settings_forget_body">The TV will have to pair again with a code.</string>
+    <string name="settings_wants_to_connect">%1$s wants to connect</string>
+    <string name="settings_tv_code_label">Code shown on the TV</string>
+    <string name="settings_code_mismatch">The code doesn’t match</string>
+    <string name="settings_pair">Pair</string>
+    <string name="settings_reject">Reject</string>
+    <string name="settings_uapp_title">Read the UAPP queue</string>
+    <string name="settings_uapp_explain">UAPP doesn’t share its queue. With your permission, DAC Stage reads it from its files using this device’s wireless debugging (local only). Without this, the UAPP queue isn’t shown.</string>
+    <string name="uapp_status_disabled">Off</string>
+    <string name="uapp_status_not_paired">Not linked</string>
+    <string name="uapp_status_wireless_off">Wireless debugging is off or wasn’t found. Turn on Developer options → Wireless debugging (with Wi-Fi connected).</string>
+    <string name="uapp_status_connecting">Connecting…</string>
+    <string name="uapp_status_connected">Connected: reading the UAPP queue</string>
+    <string name="uapp_status_error">Error: %1$s</string>
+    <string name="uapp_forget_link">Forget link</string>
+    <string name="uapp_developer_options">Developer options</string>
+    <string name="uapp_link_title">Link</string>
+    <string name="uapp_link_steps">1. Developer options → Wireless debugging → turn it on.\n2. Tap “Pair device with pairing code”.\n3. Enter the 6-digit code here (and the port if it isn’t detected automatically).\nTip: use split screen to see the code while you type it.</string>
+    <string name="uapp_open_developer_options">Open developer options</string>
+    <string name="uapp_code">Code</string>
+    <string name="uapp_port_optional">Port (optional)</string>
+    <string name="uapp_link">Link</string>
+    <string name="uapp_linking">Linking…</string>
+    <string name="uapp_link_failed">Couldn’t link</string>
+    <string name="uapp_error_disabled">Turned off in Settings</string>
+    <string name="uapp_error_bad_code">The code has 6 digits</string>
+    <string name="uapp_error_pairing_port">Pairing port not found (keep the “Pair with code” dialog open)</string>
+    <string name="uapp_error_pairing_rejected">Linking rejected</string>
+    <string name="uapp_error_pairing_failed">Linking failed</string>
+    <string name="uapp_error_not_paired">Not paired</string>
+    <string name="uapp_error_connection_refused">adbd refused the connection</string>
+    <string name="uapp_error_folder_unreadable">UAPP folder not readable</string>
+    <string name="uapp_error_connected_folder_unreadable">Connected, but the UAPP folder can’t be read</string>
+    <string name="uapp_error_wireless_off">Wireless debugging unavailable</string>
+    <string name="settings_online_title">Online info</string>
+    <string name="settings_online_explain">Only the title, artist, album and duration of what’s playing are sent to these public services. If the result isn’t a confident match, nothing is shown.</string>
+    <string name="settings_lyrics_title">Lyrics (LRCLIB)</string>
+    <string name="settings_lyrics_explain">Synced lyrics on the TV (“Lyrics” button).</string>
+    <string name="settings_musicbrainz_title">Year, label and cover (MusicBrainz)</string>
+    <string name="settings_musicbrainz_explain">Cover from Cover Art Archive when the player only provides a small one (HiBy).</string>
+
+    <!-- TV -->
+    <string name="tv_searching">Looking for the host on the network…</string>
+    <string name="tv_searching_hint">Open DAC Stage on the tablet or phone connected to the DAC, on the same Wi‑Fi.</string>
+    <string name="tv_connecting">Connecting to %1$s…</string>
+    <string name="tv_pair_with">Pair with %1$s</string>
+    <string name="tv_pair_hint">Enter it on the host: DAC Stage → Settings → Pair TV.</string>
+    <string name="tv_disconnected">Not connected to the host</string>
+    <string name="tv_retry_in">Retrying automatically in %1$d s.</string>
+    <string name="tv_retrying">Retrying automatically.</string>
+    <string name="tv_retry_now">Retry now</string>
+    <string name="tv_connected_to">Connected to %1$s</string>
+    <string name="tv_nothing_playing_on">Nothing playing on %1$s</string>
+    <string name="tv_hint_play_music">Play music in any app on the host.</string>
+    <string name="tv_unsupported_playing">%1$s is playing on %2$s.</string>
+    <string name="tv_dac_status_named">DAC · %1$s · %2$s</string>
+    <string name="tv_dac_status_connected">DAC connected · %1$s</string>
+    <string name="tv_footer_lyrics_volume_queue">▲ Lyrics and volume    ▼ Queue</string>
+    <string name="tv_footer_volume_queue">▲ Volume    ▼ Queue</string>
+    <string name="tv_back_to_cancel">Back to cancel</string>
+    <string name="tv_queue_hint">OK jumps  ·  ▲ close</string>
+    <string name="tv_dac_volume">DAC volume</string>
+    <string name="tv_dac_volume_header">DAC VOLUME</string>
+    <string name="tv_volume_panel_hint">◀ ▶  ±1 dB    OK  mute    Back  close</string>
+    <string name="tv_lyrics">Lyrics</string>
+    <string name="tv_lyrics_hide">Hide lyrics</string>
+    <string name="tv_lyrics_source">Lyrics: LRCLIB</string>
+    <string name="tv_lyrics_searching">Looking for lyrics…</string>
+    <string name="tv_lyrics_unsynced">Unsynced lyrics · approximate position</string>
+    <string name="tv_lyrics_instrumental">Instrumental</string>
+    <string name="tv_manual_ip_button">Enter host IP</string>
+    <string name="tv_manual_ip_prompt">Host IP (shown on the host in Settings → Pair TV):</string>
+    <string name="tv_manual_ip_invalid">Invalid address. Example: 192.168.1.82</string>
+
+    <!-- TV: disconnect reasons -->
+    <string name="disconnect_no_response">No response from the host</string>
+    <string name="disconnect_connection_lost">Connection lost</string>
+    <string name="disconnect_host_closed">The host closed the connection</string>
+    <string name="disconnect_pairing_rejected">Pairing rejected on the host</string>
+    <string name="disconnect_code_expired">The code expired</string>
+    <string name="disconnect_too_many_codes">Too many wrong codes</string>
+    <string name="disconnect_pairing_failed">Pairing failed</string>
+    <string name="disconnect_unpaired">The host no longer recognizes this TV: pair it again</string>
+    <string name="disconnect_rate_limited">Too many failed attempts; retrying later</string>
+    <string name="disconnect_version_mismatch">Different app versions on the host and the TV</string>
+    <string name="disconnect_rejected">Rejected by the host (%1$s)</string>
+    <string name="disconnect_connect_failed">Couldn’t connect to %1$s</string>
+    <string name="disconnect_invalid_address">Invalid address: %1$s</string>
+
+    <!-- Plurals -->
+    <plurals name="host_tvs_connected">
+        <item quantity="one">%1$d TV connected</item>
+        <item quantity="other">%1$d TVs connected</item>
+    </plurals>
+    <string name="volume_android_level">Android %1$d/%2$d</string>
+    <string name="volume_label_android">Android volume</string>
+    <string name="volume_android_no_control">The DAC is in use by Android audio; this app doesn’t expose its volume.</string>
+    <string name="dac_android_audio">The DAC is in use by Android audio: DAC Stage doesn’t touch it over USB. The TV adjusts Android’s media volume.</string>
+    <string name="settings_tv_screensaver_title">TV screensaver</string>
+    <string name="settings_earth_view_title">Earth View photos as background</string>
+    <string name="settings_earth_view_explain">The TV downloads random satellite photos from Google Earth View (no data about you or your music is sent). Place and credits are shown.</string>
+    <string name="settings_earth_view_interval">Change photo every</string>
+    <string name="settings_minutes">%1$d min</string>
+    <string name="tv_photo_credit">Earth View · %1$s</string>
+    <string name="settings_tv_idle_after">Start after (without using the remote)</string>
+    <string name="settings_tv_show_title">Show on the screensaver</string>
+    <string name="settings_tv_show_artwork">Artwork</string>
+    <string name="settings_tv_show_song">Title and album</string>
+    <string name="settings_tv_show_photo">Place and credits</string>
+    <string name="settings_tv_backdrop">Text backdrop: %1$d %%</string>
+    <string name="settings_tv_backdrop_explain">The TV adapts it to each photo: darker on bright photos, lighter on dark ones.</string>
+    <string name="settings_tv_show_plain">Without lyrics</string>
+    <string name="settings_tv_show_lyrics">With lyrics</string>
+    <string name="settings_tv_show_song_artist">Title and artist</string>
+    <string name="settings_tv_show_tech">Format and quality</string>
+    <string name="settings_tv_text_scale">Text size: %1$d %%</string>
+    <string name="tv_other_hosts">Connect to another host:</string>
+    <string name="tv_lyrics_none">No lyrics available for this song</string>
+    <string name="role_title">What will this device do?</string>
+    <string name="role_host">Host</string>
+    <string name="role_host_desc">This device has the USB DAC and the music player (UAPP, HiBy or another app). TVs and remotes connect to it.</string>
+    <string name="role_remote">Remote control</string>
+    <string name="role_remote_desc">Shows what is playing on the host and controls it: queue, lyrics and volume. Like the TV, without the screensaver.</string>
+    <string name="role_change_hint">You can change this later.</string>
+    <string name="remote_subtitle">Remote control · %1$s</string>
+    <string name="remote_use_as_host">Use as host</string>
+    <string name="remote_forget">Forget pairings</string>
+    <string name="remote_connect">Connect</string>
+    <string name="action_more">More options</string>
+    <string name="settings_role_title">This device</string>
+    <string name="settings_role_body">This device is the host. You can use it as a remote control for another host instead.</string>
+    <string name="settings_role_switch">Use as remote control</string>
+    <string name="role_switch_confirm_title">Use as remote control?</string>
+    <string name="role_switch_confirm_body">This device will stop being the host: TVs connected to it will lose the connection.</string>
+    <string name="settings_bt_title">Remote controls over Bluetooth</string>
+    <string name="settings_bt_switch">Allow Bluetooth remotes</string>
+    <string name="settings_bt_explain">A phone used as a remote can connect directly, without the router (useful if the Wi‑Fi isolates devices from each other). Pairing still needs the code on this device. Album art from local files is not shown over Bluetooth.</string>
+    <string name="settings_bt_active">Waiting for remotes over Bluetooth.</string>
+    <string name="settings_bt_waiting">Not active: turn on Bluetooth on this device.</string>
+    <string name="settings_bt_no_permission">Needs the Nearby devices permission.</string>
+    <string name="settings_bt_grant">Allow</string>
+    <string name="remote_bt_off">Turn on Bluetooth to connect to the host without going through the Wi‑Fi router.</string>
+    <string name="remote_bt_grant">Allow Bluetooth</string>
+    <string name="remote_service_channel">Remote control</string>
+    <string name="remote_service_text">Connected to the host · keeps working with the screen off</string>
+    <string name="remote_service_disconnect">Disconnect</string>
+</resources>

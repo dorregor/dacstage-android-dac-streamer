@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- Solo debug: registra los fakes del modo demo. No exportado. -->
+        <provider
+            android:name="io.github.dacstage.demo.DemoInstaller"
+            android:authorities="${applicationId}.demo"
+            android:exported="false" />
+    </application>
+</manifest>

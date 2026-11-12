@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  HTTP en claro permitido: la TV descarga carátulas del servidor HTTP del host en la LAN
+  (http://192.168.x.x:47821/...), cuya IP no se conoce de antemano (no hay forma de acotar por
+  rango de IP aquí). Las carátulas del CDN de TIDAL son https. Sin credenciales por este canal:
+  solo bytes de imágenes protegidos por un token derivado del emparejado.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
